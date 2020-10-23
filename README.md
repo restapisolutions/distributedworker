@@ -62,6 +62,8 @@ INSERT INTO workertable(id,url,status,http_code) VALUES (3, 'https://thisurldoes
 
 Oh, and also the magic sauce, our stored procedure for the concurrency, I use it to set the status to processing so 2 workers cannot do the same job.
 
+`CREATE LANGUAGE plpgsql;`
+
 This is postgreSQL specific but can be easily modified for any other database;
 ```sql
 CREATE OR REPLACE FUNCTION get_processing() RETURNS integer AS $$
