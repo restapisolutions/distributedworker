@@ -71,7 +71,7 @@ public class WorkerRunner implements CommandLineRunner {
              }
 
         } catch (Exception e){
-            //if there was an exception inside this whole with something else thing I handle it here
+            //if there was an exception inside this whole thing with something else  I handle it here
             model.setStatus("ERROR");
             model.setHttp_code(null);
 
