@@ -20,6 +20,9 @@ After that you can run the worker
 
 ` java -jar target/distributedworker-0.0.1-SNAPSHOT.jar `
 
+To run without build: 
+
+`./mvnw spring-boot:run`
 
 ### DB setup
 
@@ -114,7 +117,7 @@ The spring boot application entry point is the DistributedworkerApplication.java
 this will run the application, but the **WorkerRunner** class inside Runner package contains the business logic, it will run because it implements CommandLineRunner.
 
 The **workerRepository::get_processing** will call the stored function from the database which we call through the Service to catch any exceptions.
-We are using the ID returned by getProcessing if the function was able to set a status to processing for us, otherwise when returns -1 we know there are no more jobs to schedule.
+We are using the ID returned by getProcessing if the function was able to set a status to processing for us, otherwise when it returns -1 we know there are no more jobs to schedule.
 
 ## Tests
 I'm using test profiles to separate parts of the application. That's what the @Profile annotation is for. 
