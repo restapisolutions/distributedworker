@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
-//Turn this on before running the test
-//@Profile("test")
+@Profile({"test","!test"})
 @Service
 public class HttpService  {
 
