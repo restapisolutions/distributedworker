@@ -5,6 +5,8 @@ import com.interview.assignment.distributedworker.service.HttpService;
 import com.interview.assignment.distributedworker.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,9 @@ public class WorkerRunner implements CommandLineRunner {
     @Autowired
     HttpService httpService;
 
+    @Autowired
+    ApplicationContext context;
+
     Logger logger = LogManager.getLogger(WorkerRunner.class);
 
 
@@ -32,7 +37,13 @@ public class WorkerRunner implements CommandLineRunner {
            repeat =  runLoop();
 
         } while(repeat);
+
         logger.info("No more jobs. Goodbye");
+        shutDown(0);
+    }
+
+    private void shutDown(int returnCode){
+        SpringApplication.exit(context,()->returnCode);
     }
 
     private boolean runLoop(){
